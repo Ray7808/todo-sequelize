@@ -28,14 +28,6 @@ app.use(methodOverride('_method'))
 // 呼叫 Passport 函式並傳入 app，這條要寫在路由之前
 usePassport(app)
 
-
-app.get('/todos/:id', (req, res) => {
-  const id = req.params.id
-  return Todo.findByPk(id)
-    .then((todo) => res.render('detail', { todo: todo.toJSON() }))
-    .catch((error) => console.log(error))
-})
-
 app.use(routes)
 
 app.listen(PORT, () => {
